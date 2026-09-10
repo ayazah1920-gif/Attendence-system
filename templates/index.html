@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Attendance System - Computer Vision</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <h1>📷 Online Attendance System</h1>
+  <p>Computer Vision based Face Recognition Attendance</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Camera</h2>
+    <video id="video" autoplay playsinline width="400" height="300"></video>
+    <canvas id="canvas" width="400" height="300" style="display:none;"></canvas>
+    <div class="btn-row">
+      <button id="markBtn">✅ Mark Attendance</button>
+    </div>
+    <div id="recognizeResult" class="result-box"></div>
+  </section>
+
+  <section class="card">
+    <h2>Register New Student</h2>
+    <form id="registerForm">
+      <input type="text" id="studentName" placeholder="Full Name" required>
+      <input type="text" id="rollNo" placeholder="Roll No" required>
+      <button type="button" id="captureBtn">📸 Capture 5 Samples</button>
+      <div id="sampleCount">Samples captured: 0 / 5</div>
+      <button type="submit" id="registerBtn" disabled>Register Student</button>
+    </form>
+    <div id="registerResult" class="result-box"></div>
+  </section>
+
+  <section class="card full-width">
+    <h2>Today's Attendance</h2>
+    <div class="btn-row">
+      <input type="date" id="dateFilter">
+      <button id="refreshBtn">🔄 Refresh</button>
+      <button id="exportBtn">⬇️ Export CSV</button>
+    </div>
+    <table id="attendanceTable">
+      <thead>
+        <tr><th>Name</th><th>Roll No</th><th>Date</th><th>Time</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
