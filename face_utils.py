@@ -7,9 +7,11 @@ import json
 import cv2
 import numpy as np
 
-FACE_CASCADE = cv2.CascadeClassifier(
-    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-)
+CASCADE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cascades", "haarcascade_frontalface_default.xml")
+FACE_CASCADE = cv2.CascadeClassifier(CASCADE_PATH)
+
+if FACE_CASCADE.empty():
+    raise RuntimeError(f"Haar cascade file load nahi hui: {CASCADE_PATH}")
 
 
 def detect_faces(img):
